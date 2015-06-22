@@ -22,10 +22,15 @@ CONNECTION.results_as_hash = true
 # ------------------------------------------------------------
 
 # - Homepage
+#
+# - Displays the homepage (links to /books, /genres, /locations, /search)
 get "/home" do
   erb :"homepage"
 end
 
+# - Book options page
+#
+# - Links to /add_book, /edit_book, /delete_book
 get "/books" do
   erb :"books_page"
 end
@@ -33,11 +38,16 @@ end
 # - Add Book ------------------
 # 
 # - Book information form
+#
+# - Accepts inputs for book information to add to database.
+# - Links to /save_book
 get "/add_book" do
   erb :"add_book_form"
 end
 
 # - Creates book object, checks to see if valid, adds row to database.
+#
+# - links back to homepage or displays fail text.
 get "/save_book" do
   new_book = Book.new({"name" => params["name"], "genre_id" => params["genre_id"].to_i, "location_id" => params["location_id"].to_i, "quantity" => params["quantity"].to_i})
   
@@ -57,20 +67,19 @@ get "/edit_book" do
   erb :"edit_book"
 end
 
-# - List of things to edit, links to change_book_***
+# - Displays a drop-down menu for editable attributes of a book.
+#
+# - Links to /change_book/:id
 get "/edit_book/:id" do
   erb :"edit_book_list"
 end
 
-# - Change name form
-get "/edit_book_name/:id" do
-  erb :"change_book_name_form"
-end
-
-# - Creates object and updates table for name
-get "/change_book_name/:id" do
+# - Creates book object and updates assosiated column with the new information.
+#
+# - Links back to /home
+get "/change_book/:id" do
   column = params["edit_choice"]
-  binding.pry
+  
   book_object = Book.find(params["id"].to_i)
   book_object.send("#{column}=", params["new_input"])
   book_object.save

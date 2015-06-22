@@ -1,11 +1,11 @@
 <h1> What would you like to edit about this book? </h1>
 
 
-<form action="/change_book_name/<%= params["id"] %>">
+<form action="/change_book/<%= params["id"] %>">
   <select name="edit_choice">
       <option value="name">Name</option>
-      <option value="genre">Genre</option>
-      <option value="location">Location</option>
+      <option value="genre_id">Genre</option>
+      <option value="location_id">Location</option>
       <option value="quantity">Quantity</option>
   </select>
 
@@ -14,3 +14,30 @@
   <input type="submit">
 </form> 
   
+<h2>Genre Table</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+  </tr>
+  <% Genre.all.each do |genre| %>
+    <tr>
+      <td><%= genre.id %></td>
+      <td><%= genre.name %></a></td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>Location Table</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+  </tr>
+  <% Location.all.each do |location| %>
+    <tr>
+      <td><%= location.id %></td>
+      <td><%= location.name %></a></td>
+    </tr>
+  <% end %>
+</table>
