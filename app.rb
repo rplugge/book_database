@@ -69,8 +69,10 @@ end
 
 # - Creates object and updates table for name
 get "/change_book_name/:id" do
+  column = params["edit_choice"]
+  binding.pry
   book_object = Book.find(params["id"].to_i)
-  book_object.name = params["new_name"]
+  book_object.send("#{column}=", params["new_input"])
   book_object.save
   
   erb :"homepage"

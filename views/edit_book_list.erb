@@ -1,8 +1,16 @@
 <h1> What would you like to edit about this book? </h1>
 
-<ul>
-  <li><a href="/edit_book_name/<%=params["id"] %>">Name</a></li>
-  <li><a href="/edit_book_genre/<%= params["id"] %>">Genre</a></li>
-  <li><a href="/edit_book_location/<%= params["id"] %>">Location</a></li>
-  <li><a href="/edit_book_quantity/<%= params["id"] %>">Quantity</a></li>
-</ul>
+
+<form action="/change_book_name/<%= params["id"] %>">
+  <select name="edit_choice">
+      <option value="name">Name</option>
+      <option value="genre">Genre</option>
+      <option value="location">Location</option>
+      <option value="quantity">Quantity</option>
+  </select>
+
+  <input type="text" name="new_input" placeholder="New Input">
+  
+  <input type="submit">
+</form> 
+  
