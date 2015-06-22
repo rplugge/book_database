@@ -78,47 +78,6 @@ get "/change_book_name/:id" do
   erb :"homepage"
 end
 
-# - Change genre form
-get "/edit_book_genre/:id" do
-  erb :"change_book_genre_form"
-end
-
-# - Creates object and updates table for genre_id
-get "/change_book_genre/:id" do
-  book_object = Book.find(params["id"].to_i)
-  book_object.genre_id = params["new_genre"]
-  book_object.save  
-  
-  erb :"homepage"
-end
-
-# - Change location form
-get "/edit_book_location/:id" do
-  erb :"change_book_location_form"
-end
-
-# - Creates object and updates table for location_id
-get "/change_book_location/:id" do
-  book_object = Book.find(params["id"].to_i)
-  book_object.location_id = params["new_location"]
-  book_object.save  
-  
-  erb :"homepage"
-end
-
-# - Change quantity form
-get "/edit_book_quantity/:id" do
-  erb :"change_book_quantity_form"
-end
-
-# - Creates object and updates table for quantity
-get "/change_book_quantity/:id" do
-  book_object = Book.find(params["id"].to_i)
-  book_object.quantity = params["new_quantity"]
-  book_object.save
-  
-  erb :"homepage"
-end
 
 get "/delete_book" do
   erb :"delete_book"
