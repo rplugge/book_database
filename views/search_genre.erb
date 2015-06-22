@@ -1,0 +1,14 @@
+<h1>Which genre would you like to search by?</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  <% Genre.all.each do |genre| %>
+    <tr>
+      <td><%= genre.id %></td>
+      <td><a href="/search_genre/<%= genre.id %>"><%= genre.name %></a></td>
+    </tr>
+  <% end %>
+</table>

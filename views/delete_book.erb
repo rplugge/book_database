@@ -1,0 +1,20 @@
+<h1>Which book would you like to delete?</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>BOOK</th>
+    <th>GENRE_ID</th>
+    <th>LOCATION_ID</th>
+    <th>QUANTITY</th>
+  </tr>
+  <% Book.all.each do |book| %>
+    <tr>
+      <td><%= book.id %></td>
+      <td><a href="/delete_book_object/<%= book.id %>"><%= book.name %></a></td>
+      <td><%= book.genre_id%></td>
+      <td><%= book.location_id%></td>
+      <td><%= book.quantity%></td>
+    </tr>
+  <% end %>
+</table>

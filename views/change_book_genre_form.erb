@@ -1,0 +1,21 @@
+<h1>What is the new book genre?</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>GENRE</th>
+  </tr>
+  <% Genre.all.each do |genre| %>
+    <tr>
+      <td><%= genre.id %></td>
+      <td>$<%= genre.name %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<form action="/change_book_genre/<%= params["id"] %>">
+  <input type="text" name="new_genre" placeholder="New Book Genre">
+  
+  <input type="submit">
+</form>

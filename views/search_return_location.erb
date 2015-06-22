@@ -1,0 +1,13 @@
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  <% Book.where_location(params["id"].to_i).each do |book| %>
+    <tr>
+      <td><%= book.id   %></td>
+      <td><%= book.name %></td>
+    </tr>
+  <% end %>
+</table>

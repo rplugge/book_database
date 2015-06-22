@@ -1,0 +1,35 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>GENRE</th>
+  </tr>
+  <% Genre.all.each do |genre| %>
+    <tr>
+      <td><%= genre.id %></td>
+      <td><%= genre.name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>LOCATION</th>
+  </tr>
+  <% Location.all.each do |location| %>
+    <tr>
+      <td><%= location.id %></td>
+      <td><%= location.name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<form action="/save_book">
+  <input type="text" placeholder="Name" name="name">
+  <input type="number" placeholder="Genre ID" name="genre_id">
+  <input type="number" placeholder="Location ID" name="location_id">
+  <input type="number" placeholder="Quantity" name="quantity">
+  
+  <input type="submit">
+</form>
+  
